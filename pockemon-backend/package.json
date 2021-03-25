@@ -1,0 +1,31 @@
+{
+  "name": "pockemon-backend",
+  "version": "1.0.0",
+  "description": "Backend en mongodb y express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/camiaguado/pockemon-adalab.git"
+  },
+  "keywords": [
+    "express",
+    "mongodb",
+    "nodejs"
+  ],
+  "author": "Camila Aguado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camiaguado/pockemon-adalab/issues"
+  },
+  "homepage": "https://github.com/camiaguado/pockemon-adalab#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
