@@ -1,0 +1,25 @@
+.filter-search {
+    width: 100%;
+    border: 0;
+    height: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 4px 0 rgb(62 62 62 / 25%);
+    transition: 0.2s all ease;
+    background: rgb(255 255 255 / 85%);
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .filter-search {
+        font-size: 1rem;
+    }
+}
+
+.filter-search:hover,
+.filter-search:focus,
+.filter-search:active {
+    box-shadow: 0 4px 8px 0 rgb(62 62 62 / 70%);
+    background: rgb(255 255 255 / 100%);
+    outline: none;
+}
