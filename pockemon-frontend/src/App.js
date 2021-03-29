@@ -14,33 +14,22 @@ import PokemonDetail from './Pages/PokemonDetail/PokemonDetail';
 
 function App() {
 
-  const [ pokemones, guardarPokemones ] = useState([]);
+  
   const [ pokemonDetails, guardarDetails ] = useState([]);
 
   useEffect(() => {
     
-    const consultarAPI = () => {
-      clienteAxios.get('/pokemones')
-        .then( respuesta => {
-          guardarPokemones(respuesta.data);
-        })
-        .catch(error => {
-          console.log(error);
+    const consultarAPI = async() => {
+      const pokemonsList = await clienteAxios.get('/pokemones');
+
+      pokemonsList.data.forEach(async pok => {         
+            const res = await axios.get(pok.url)
+            guardarDetails((old)=> old.concat(res.data)) 
         })
     }
-    consultarAPI();
-
-    pokemones.forEach(pok => {
-      axios.get(pok.url)
-      .then(respuesta => {
-    
-        pokemonDetails.push(respuesta.data);
-    
-      })   
-  })
-  guardarDetails(pokemonDetails)
+    consultarAPI().catch(console.error);
   
-  }, [pokemonDetails]);
+  }, []);
   
   
   return (

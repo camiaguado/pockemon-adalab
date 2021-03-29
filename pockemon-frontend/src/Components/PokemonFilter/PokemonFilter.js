@@ -1,12 +1,23 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import '../PokemonFilter/PokemonFilter.css';
-const PokemonFilter = () => {
+//SEARCH_TERM_LENGHT = 3;
+
+const PokemonFilter = (props) => {
+    
+    const [searchTerm, setSearchTerm] = useState('');
+    const handleSearch = event => {
+        if(props.handleSearch){
+            props.handleSearch(event.target.value);
+        }
+        setSearchTerm(event.target.value)
+    }
+
     return ( 
         <Fragment>
             <div className="pokemon__header">
-                <input className="filter-search" type="text" placeholder="Filtra pokemones por nombre..."></input>
+                <input onChange={handleSearch} className="filter-search" type="text" placeholder="Filtra pokemones por nombre..." value={searchTerm}></input>
             </div>
-    </Fragment> );
+        </Fragment> );
 }
  
 export default PokemonFilter;
