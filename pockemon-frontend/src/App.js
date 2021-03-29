@@ -4,9 +4,9 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import clienteAxios from './Config/axios'
-// estilos:
+import clienteAxios from './Config/axios';
 import '../src/global.css';
+import axios from 'axios';
 
 // componentes:
 import PokemonesList from './Pages/PokemonesList/PokemonesList'
@@ -14,10 +14,11 @@ import PokemonDetail from './Pages/PokemonDetail/PokemonDetail';
 
 function App() {
 
-  // state de la app:
   const [ pokemones, guardarPokemones ] = useState([]);
+  const [ pokemonDetails, guardarDetails ] = useState([]);
 
   useEffect(() => {
+    
     const consultarAPI = () => {
       clienteAxios.get('/pokemones')
         .then( respuesta => {
@@ -28,8 +29,19 @@ function App() {
         })
     }
     consultarAPI();
-  }, []);
 
+    pokemones.forEach(pok => {
+      axios.get(pok.url)
+      .then(respuesta => {
+    
+        pokemonDetails.push(respuesta.data);
+    
+      })   
+  })
+  guardarDetails(pokemonDetails)
+  
+  }, [pokemonDetails]);
+  
   
   return (
     <Fragment>
@@ -45,13 +57,12 @@ function App() {
     </div>
       <Router>
         <Switch>
-          <Route exact path="/" component={() => <PokemonesList pokemones={pokemones}/>}/>
+          <Route exact path="/" component={() => <PokemonesList pokemones={pokemonDetails}/>}/>
           <Route exact path="/pokemonDetail/:id" 
                   render={(props) => {
-                    const pokemon = pokemones.filter( pokemon => pokemon.name === props.match.params.id)
-                    console.log('este es', pokemon[0].url);
+                    const pokemon = pokemonDetails.filter( pokemon => pokemon.name === props.match.params.id)
                   return(
-                    <PokemonDetail pokemon={pokemon[0].url}></PokemonDetail>
+                    <PokemonDetail pokemon={pokemon}></PokemonDetail>
                   )
                   }}/>
         </Switch>

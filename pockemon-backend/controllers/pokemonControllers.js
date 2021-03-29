@@ -19,14 +19,11 @@ exports.nuevoPokemon = async(req, res, next) => {
 // obtiene todos los pokemones
 
 exports.obtenerListaPokemones = async (req, res, next) => {
-    console.log('entra al get');
     try {
         const pokemones = await Pokemon.find({});
-        console.log(pokemones);
         res.json(pokemones);
     } catch (error) {
         console.log(error);
         next();
     }
 }
-

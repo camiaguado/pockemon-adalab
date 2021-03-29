@@ -1,26 +1,28 @@
 import React, {Fragment} from 'react';
 import '../PokemonCard/PokemonCard.css';
-const PokemonCard = () => {
+
+
+const PokemonCard = ({pokemon}) => {
+    
+    const hasEvolution = pokemon.past_types.length < 0;
     return ( 
         <Fragment>
         <div className="card">
             <div className="cover">
                 <div className="cover__img">
-                    <img alt="PokemonName" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/200.png" />
+                    <img alt={pokemon.name} src={pokemon.sprites.other.dream_world.front_default} />
                 </div>
-                <div className="pokemon-id">ID/X</div>
+                 <div className="pokemon-id">ID / {pokemon.base_experience}</div>
             </div>
             <div className="card__content">
-                <div className="card__title">Hello title
+                <div className="card__title">{pokemon.name}
                 </div>
                 <div className="card__tags">
-                    <div className="card__tags__tag">Hello tag</div>
-                    <div className="card__tags__tag">Hello tag</div>
+                    {pokemon.types.map(element =>
+                             <div className="card__tags__tag" key={element.type.name}>{element.type.name}</div>
+                    )}
                 </div>
-                <div className="card__evolution">
-                    <span>Evoluciona de:</span>
-                    helloEvolution
-                </div>
+                {hasEvolution ? <div className="card__evolution"><span>Evoluciona de:</span> {pokemon.past_types[0]} </div> : ''}     
             </div>
         </div>
     </Fragment> );
