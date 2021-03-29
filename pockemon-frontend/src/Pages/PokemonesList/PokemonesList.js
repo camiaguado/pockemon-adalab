@@ -9,9 +9,7 @@ const PokemonesList = ({pokemones}) => {
     const [filterPokemon, setFilters] = useState(pokemones);
 
     const handleSearch =  (term) => {
-        console.log(pokemones)
-        setFilters(pokemones.filter(pokemon => pokemon.name.includes(term)));
-        
+        setFilters(pokemones.filter(pokemon => pokemon.name.includes(term)));    
     }
 
     return (
@@ -22,9 +20,9 @@ const PokemonesList = ({pokemones}) => {
 
 
                     <div className="card-list">
-                    {filterPokemon.map(pokemon =>  
-                            <Link to={`/pokemonDetail/${pokemon.name}`} key={pokemon.id} className="card-link">
-                                <PokemonCard pokemon={pokemon} key={pokemon.id}></PokemonCard>
+                    {filterPokemon.map((pokemon, index) =>  
+                            <Link to={`/pokemonDetail/${pokemon.name}`} key={pokemon.name} className="card-link">
+                                <PokemonCard key={pokemon.name+index} pokemon={pokemon}></PokemonCard>
                             </Link>
                             
                             )}

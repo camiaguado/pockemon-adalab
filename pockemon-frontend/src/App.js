@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import clienteAxios from './Config/axios';
 import '../src/global.css';
-import axios from 'axios';
 
 // componentes:
 import PokemonesList from './Pages/PokemonesList/PokemonesList'
@@ -20,10 +19,9 @@ function App() {
   useEffect(() => {
     
     const consultarAPI = async() => {
-      const pokemonsList = await clienteAxios.get('/pokemones');
-
-      pokemonsList.data.forEach(async pok => {         
-            const res = await axios.get(pok.url)
+      const pokemonsList = await clienteAxios.get('pokemon?limit=100&offset=200');
+      pokemonsList.data.results.forEach(async pok => {         
+            const res = await clienteAxios.get(pok.url)
             guardarDetails((old)=> old.concat(res.data)) 
         })
     }
