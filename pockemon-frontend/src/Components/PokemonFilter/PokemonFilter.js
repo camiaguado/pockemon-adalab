@@ -1,6 +1,5 @@
 import React, {Fragment, useState} from 'react';
 import '../PokemonFilter/PokemonFilter.css';
-//SEARCH_TERM_LENGHT = 3;
 
 const PokemonFilter = (props) => {
     
