@@ -5,7 +5,7 @@ El proyecto consta de dos partes:
 2. pockemon-backend
 
 
-En el backend se ha creado el servidor, conexión y configuración pero no se utiliza ya que desde frontend consumo directamente las API de POKEAPI
+En el backend se ha creado el servidor, conexión y configuración a mongodb pero no se utiliza en la app de frontend ya que desde ahí consumo directamente las API de POKEAPI
 
 Descargar repositorio desde la rama master
 
