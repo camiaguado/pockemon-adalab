@@ -3,7 +3,6 @@ import '../PokemonCard/PokemonCard.css';
 
 
 const PokemonCard = (props) => {
-    console.log('class nameee',props.className);
     const hasEvolution = props.pokemon.past_types.length > 0;
     
     return ( 
