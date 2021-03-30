@@ -12,12 +12,14 @@
     flex-direction: row;
 }
 
-.card--horizontal .cover {
+.card--horizontal .cover img {
     flex-direction: column;
 }
 
 .card--horizontal .pokemon-id {
-    position: relative;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .card:hover {
