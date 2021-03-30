@@ -22,7 +22,7 @@ const PokemonesList = ({pokemones}) => {
                     <div className="card-list">
                     {filterPokemon.map((pokemon, index) =>  
                             <Link to={`/pokemonDetail/${pokemon.name}`} key={pokemon.name} className="card-link">
-                                <PokemonCard key={pokemon.name+index} pokemon={pokemon}></PokemonCard>
+                                <PokemonCard className="card" key={pokemon.name+index} pokemon={pokemon}></PokemonCard>
                             </Link>
                             
                             )}

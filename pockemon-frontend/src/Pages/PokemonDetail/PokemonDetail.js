@@ -10,7 +10,7 @@ return ( <Fragment>
         <div className="pokemon__header">
             <Link to="/" className="pokemon-link">Volver</Link>
         </div>
-       <PokemonCard pokemon={pokemon[0]}></PokemonCard>
+       <PokemonCard className="card card--horizontal" pokemon={pokemon[0]}></PokemonCard>
     </div>
 </Fragment> );
 }
